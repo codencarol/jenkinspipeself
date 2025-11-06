@@ -1,0 +1,493 @@
+plugins:Maven integration
+Build pipeline
+Shining panda
+Docker plugin
+Html publisher
+
+Tools:
+Maven
+Ant
+Gradle
+Git
+Jdk
+python
+
+
+1. 
+In Jenkins, show changes in a project with the help of webhooks. 
+
+
+
+Open powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri "https://get.scoop.sh" | Invoke-Expression
+scoop bucket add hookdeck https://github.com/hookdeck/scoop-hookdeck-cli.git
+scoop install hookdeck
+hookdeck listen 8080 
+Copy requests link
+Go to github fork jenkins pipeline tutorial
+Go to settings
+Add payloads url
+Content type application/json
+Add webhook
+Jenkins (create pipeline project)
+In triggers
+GitHub hook trigger for GITScm polling
+Poll scm  schedule(H/2 * * * *)
+Pipeline script for scm
+Add repository link
+Script path:      hello-world/Jenkinsfile
+Apply save
+Go to github add a file 
+Check build and click on pipeline overview
+
+
+
+2. 
+To execute 20 Git commands
+
+
+git init
+git config --global user.name "Your Name"
+git config --global --list
+git status
+git add file1.txt
+git add .
+git commit -m "message"
+git log
+git log –oneline t1.txt
+Git log –oneline code
+git branch
+git branch feature1            simply creates a new branch named feature1.
+git checkout feature1
+git merge feature1           Merge the branch named feature1 into your current branch (
+git remote add origin https://github.com/codencarol/carol.git
+git remote -v
+git push -u origin master
+git pull
+git clone <url>
+git diff
+git reset --hard
+git rm filename
+git tag 
+Git show
+git blame f1.txt
+git checkout -b bugfix
+git fetch
+
+
+3. 
+To implement Pull, Push, fetch and merge operations between Git and GitHub. 
+
+
+Make a folder on desktop
+Make a new git repo and copy link
+Go to git cmd and cd folder path
+Git init
+Git remote add origin url
+Git remote -v
+Make 2 random files in folder
+Git add .
+Git commit -m “1st commit”
+Git push -u origin master
+Git Fetch origin 
+Add a file in github
+Git Fetch origin
+ Git pull origin master
+Git branch
+Git branch new
+Git branch
+Git merge branch
+
+
+
+
+
+
+4. 
+To build a Java Project using Jenkins with parameters to perform some mathematical operations 
+
+
+
+Calculator.java
+public class Calculator {
+    public static void main(String[] args) {
+        int a = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+        String op = args[2];
+
+        if(op.equals("add")) {
+            System.out.println("Result = " + (a + b));
+        }
+        else if(op.equals("mul")) {
+            System.out.println("Result = " + (a * b));
+        }
+        else {
+            System.out.println("Invalid operation");
+        }
+    }
+}
+
+
+PARAMETERS:
+
+Name
+Type
+Default
+NUM1
+String Parameter
+10
+NUM2
+String Parameter
+5
+OP
+Choice Parameter
+add, mul
+
+ 
+
+Command:
+
+Cd path
+Javac Calculator.java
+Java Calculator %NUM1% %NUM2% %OP%
+
+
+
+8. 
+To create a pipeline script (consisting of stages, parameters etc.) and build a pipeline of jobs in Jenkins
+
+
+Jenkins pipeline project
+This project is parameterized
+Name :   DEVICE_OWNER
+Default Value: carol
+Description: Enter the laptop owner name
+Pipeline script
+pipeline {
+    agent any
+
+
+    parameters {
+        string(
+            name: 'DEVICE_OWNER', 
+            defaultValue: 'Carol', 
+            description: 'Enter the laptop owner name'
+        )
+    }
+
+
+    stages {
+
+
+        stage('stage1') {
+            steps {
+                echo "Laptop is owned by ${params.DEVICE_OWNER}"
+            }
+        }
+
+
+        stage('stage2') {
+            steps {
+                echo "Hello Carol"
+            }
+        }
+
+
+    }
+}
+Apply save
+Build with parameters and check pipeline overview
+
+
+
+
+
+
+
+
+
+9. 
+To fork a GitHub repository with Jenkinsfile and build a pipeline of jobs in Jenkins
+
+
+Go to github fork jenkins pipeline tutorial
+Jenkins (create pipeline project)
+In triggers
+GitHub hook trigger for GITScm polling
+Poll scm  schedule(H/2 * * * *)
+Pipeline script for scm
+Add repository link
+Script path:      hello-world/Jenkinsfile
+Apply save
+Build now
+Check build and click on pipeline overview
+
+
+
+
+15.
+To make a GitHub repository with your own Jenkinsfile and build a pipeline of jobs in Jenkins
+
+Go to github : create a new repo 
+Check out my repo named jenkinspipeself take code
+Create new file named Jenkinsfile in new repo and add code no extension
+Copy url
+Go to jenkins 
+Create pipeline project
+Git project put url
+triggers=>GitHub hook trigger for GITScm polling
+pipeline=>pipeline script from scm 
+Branches to build=> */main
+Script path=> Jenkinsfile
+Apply save and output check
+pipeline {
+    agent any
+    stages {
+
+        stage('Build') {
+            steps {
+                echo "Building project for Rishabh"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying build..."
+            }
+        }
+
+    }
+}
+
+
+14.
+To execute 20 docker commands
+
+
+1.docker version
+2.docker login
+3.docker images
+4.docker pull ubuntu
+5.docker images –help
+6.docker run ubuntu
+7.docker ps
+8.docker start <containerID>
+9.docker pause <containerID>
+10. docker stop <containerID>
+11.docker top <containerID>
+12.docker stats <containerID>
+13.docker rm <containerID>
+14.docker inspect ubuntu
+15.docker ps -a
+16.docker commit <containerID>
+17.docker push <containerID>
+18.docker history <containerID>
+19.docker logs <containerID>
+20.docker info
+
+
+
+
+11.
+To build an image for a web application using Dockerfile
+
+Create a desktop folder 
+Create index.html
+<html>
+<head>
+    <title>
+       carol
+    </title>
+</head>
+ <body>
+            <p>Carol Dsilva roll no.21 TE INFT A2</p>
+ </body>
+</html>
+
+Dockerfile
+FROM ubuntu:latest
+MAINTAINER "Carol Dsilva"
+RUN apt update -y
+RUN apt install nginx -y
+EXPOSE 80
+COPY index.html /usr/share/nginx/html/index.html
+COPY index.html /var/www/html/index.html
+CMD ["nginx", "-g", "daemon off;"]
+
+Cmd 
+Cd path
+docker build -t carol .
+docker run -t -ip 8888:80 carol
+
+
+
+10.
+In Jenkins, create a slave node, connect it with master and build a project in slave node
+
+Create folder on desktop
+jenkins=>settings=>nodes=>new node
+Add name:no.of executors:label:remote root directory:Launch method=>launch agent by connecting it to a controller
+Apply and save click
+Create new item freestyle
+Trigger builds
+Execute windows bash commands
+Echo “hello”
+Hostname
+build
+
+
+
+
+12.
+To create and run a test case on Chrome browser with Katalon selenium IDE addon
+
+Go to chrome web store
+Add extension katalon selenium tester
+Click on add new test case
+Add test
+Start recording
+
+
+
+
+
+13.
+To execute 20 linux commands
+
+
+
+
+sudo
+sudo apt-get update
+ls
+cd
+pwd
+mv file1.txt file2.txt
+mkdir carol
+rmdir carol
+history
+df
+du
+free
+top
+whatis ls
+date
+w
+exit
+head file.txt
+tail file.txt
+echo “carol”
+Grep “hello” file.txt
+<command name> –help
+zip to.zip file.txt
+unzip to.zip
+info
+man ls
+
+5. 
+To implement windows batch command on a project in Jenkins (with and without parameters)
+
+Without parameters is freestyle project
+With parameters
+This project is parameterized
+String parameters boolean and choice
+echo "My name is %variable1%"
+echo "My surname is %variable2%"
+echo "Are you a student? %variable3%"
+echo "My fav fruit is %variable4%"
+
+
+
+
+6. 
+To build any python project (python file) in Jenkins
+
+
+Write a python program:
+def sum_of_natural_numbers(N):
+    total = 0
+    count = 1
+    while count <= N:
+        total += count
+        count += 1
+    return total
+
+N = 7
+result = sum_of_natural_numbers(N)
+
+print("The Sum of the First", N, "Natural Numbers is:", result)
+
+2. Create a free style python project:
+3.execute windows bash command
+ Cd path
+python filename.py
+
+
+16.
+To build any python project (python script) in Jenkins
+
+
+Freestyle 
+Python builder
+
+n = 6
+
+# Initialize the factorial variable to 1
+fact = 1
+
+# Calculate the factorial using a for loop
+for i in range(1, n + 1):
+    fact *= i
+
+print(fact)
+
+
+7. 
+To build an Ant project in Jenkins and show how builds can be scheduled with some specific cron command
+
+
+Freestyle project
+Git rps ant
+Invoke ant package
+target=> clean compile test
+Cron command
+output=>in package .war link cpy
+Paste dir link in cmd
+
+
+18.
+To build a Maven project in Jenkins and show how builds can be scheduled with some specific cron command
+
+Install all plugins
+Set all tools ang configure properly
+New =>Maven project
+github=>Helllo world
+Goals => clean compile package
+Cron command
+output=> copy .jar file
+cmd=> dir link
+
+
+17.
+To build a Java Project without parameters and show how builds can be scheduled with some specific cron command
+
+Freestyle project
+Create file as HelloWorld.java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+
+3.cron command
+4.windows bash commands
+Cd path
+Javac HelloWorld.java
+Java HelloWorld
